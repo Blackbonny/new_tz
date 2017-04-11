@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
+    <meta description="Создание сайтов в Минске">
+    <title>New Site</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#modal-form').submit(function () {
+                $.ajax({
+                    type: "POST",
+                    url: 'send1.php',
+                    datatype: 'html',
+                    data: $('#modal-form').serialize(),
+                    success: function () {
+                        $('#modal-first').fadeOut(300,function(){
+                            $('#modal-second').fadeIn(300).delay(800).fadeOut(300);
+                            $('#overlay').fadeOut(300);
+                            $('#modal-form')[0].reset();
+                        });
+                    },
+                    error: function () {
+                        alert('Произошла ошибка! Сообщение не отправлено!');
+                    }
+                });
+                return false;
+            });
+            $('#contacts-content-form').submit(function () {
+                $.ajax({
+                    type: "POST",
+                    url: 'send2.php',
+                    datatype: 'html',
+                    data: $('#contacts-content-form').serialize(),
+                    success: function () {
+                        $('#modal-second').fadeIn(300).delay(800).fadeOut(300);
+                        $('#contacts-content-form')[0].reset();
+                    },
+                    error: function () {
+                        alert('Произошла ошибка! Сообщение не отправлено!');
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="all-content">
+        <div id="modal-first">
+            <h4>Обратный звонок</h4>
+            <div id="modal-close">
+                <p>X</p>
+            </div>
+            <form id="modal-form" action="" method="post">
+                <div class="modal-form-block">
+                    <input type="text" class="modal-form-control" name="name" required="required" placeholder="Введите Имя">
+                </div>
+                <div class="modal-form-block">
+                    <input type="text" class="modal-form-control" name="phone" required="required" placeholder="Введите телефонный номер">
+                </div>
+                <div id="modal-form-button">
+                    <input type="submit" class="modal-form-button-style" value="ЗАКАЗАТЬ">
+                </div>
+            </form>
+        </div>
+        <div id="modal-second">
+            <h4>СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В КРАТЧАЙШЕЕ ВРЕМЯ</h4>
+        </div>
+        <div id="overlay"></div>
+        <div id="header-scroll">
+            <div class="all-header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/new-logo.png" alt="Webcom Media">
+                    </a>
+                </div>
+                <nav class="top-menu">
+                    <div class="top-menu-block">
+                        <a href="#main" class="active">ГЛАВНАЯ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#portfolio">ПОРТФОЛИО</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#advantages">ПРЕИМУЩЕСТВА</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#work-plan">СХЕМА РАБОТЫ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#comments">ОТЗЫВЫ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#contacts">КОНТАКТЫ</a>
+                    </div>
+                </nav>
+                <a href="#modal-first" id="top-menu-button" class="modal-button-first">
+                    <input type="button" class="top-menu-button-style" value="ЗАКАЗАТЬ ЗВОНОК">
+                </a>
+            </div>
+        </div>
+        <div id="header-mobile">
+                <nav class="top-menu-mobile">
+                    <div class="top-menu-mobile-block">
+                        <a href="index.html">ГЛАВНАЯ</a>
+                    </div>
+                    <div class="top-menu-mobile-block">
+                        <a href="#portfolio">ПОРТФОЛИО</a>
+                    </div>
+                    <div class="top-menu-mobile-block">
+                        <a href="#advantages">ПРЕИМУЩЕСТВА</a>
+                    </div>
+                    <div class="top-menu-mobile-block">
+                        <a href="#work-plan">СХЕМА РАБОТЫ</a>
+                    </div>
+                    <div class="top-menu-mobile-block">
+                        <a href="#comments">ОТЗЫВЫ</a>
+                    </div>
+                    <div class="top-menu-mobile-block">
+                        <a href="#contacts">КОНТАКТЫ</a>
+                    </div>
+                </nav>
+        </div>
+        <div id="header">
+            <div class="all-header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/new-logo.png" alt="Webcom Media">
+                    </a>
+                </div>
+                <nav class="top-menu">
+                    <div class="top-menu-block">
+                        <a href="index.html">ГЛАВНАЯ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#portfolio">ПОРТФОЛИО</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#advantages">ПРЕИМУЩЕСТВА</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#work-plan">СХЕМА РАБОТЫ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#comments">ОТЗЫВЫ</a>
+                    </div>
+                    <div class="top-menu-block">
+                        <a href="#contacts">КОНТАКТЫ</a>
+                    </div>
+                </nav>
+                <div id="top-menu-phone">
+                    <p>+375 (29) 000-00-00</br>
+                    +375 (33) 000-00-00</p>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="rslides_container">
+                <ul class="rslides">
+                    <li><img src="img/texture1.jpg"></li>
+                    <li><img src="img/texture4.png"></li>
+                    <li><img src="img/texture13.png"></li>
+                    <li><img src="img/texture2.png"></li>
+                    <li><img src="img/texture5.png"></li>
+                </ul>
+                <a href="#modal-first" id="main-slider-content-button" class="modal-button-first">
+                        <input type="button" class="main-slider-content-button-style" value="ЗАКАЗАТЬ ЗВОНОК">
+                    </a>
+                <a href="#wrapper" id="button-to-down" class="hover">
+                    <img src="img/arrow.png">
+                </a>
+                <div id="menu-mobile-button">
+                    <a class="hover">
+                        <img src="img/menu-mobile.png">
+                    </a>
+                </div>
+                <div id="main-slider-content">
+                    <h1>ГЛАВНЫЙ ЗАГОЛОВОК</h1>
+                    <div id="main-slider-content-separator">
+                        <img class="main-slider-content-separator-line" src="img/1.png">
+                        <img id="main-slider-content-separator-center" src="img/2.png">
+                        <img class="main-slider-content-separator-line" src="img/1.png">
+                    </div>
+                    <p>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING</br>
+                        ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT</br>
+                        UT LABORE ET DOLORE MAGNA ALIQUA.</p>
+                </div>
+            </div>
+        </div>
+        <div id="about">
+            <div class="head">
+                <h2>О КОМПАНИИ</h2>
+                <div class="separator2">
+                    <img src="img/separator.png">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            </div>
+            <div id="about-content">
+                <div class="about-content-photo">
+                        <img src="img/photo1.png">
+                </div>
+                <div class="about-content-photo">
+                        <img src="img/photo1.png">
+                </div>
+                <div class="about-content-photo">
+                        <img src="img/photo1.png">
+                </div>
+            </div>
+        </div>
+        <div id="portfolio">
+            <div class="head">
+                <h2>НАША РАБОТА</h2>
+                <div class="separator2">
+                    <img src="img/separator.png">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            </div>
+            <div id="portfolio-content">
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+                <div class="portfolio-content-photo">
+                        <img src="img/photo1.png">
+                    <div class="portfolio-content-photo-popup">
+                        <h3>НАЗВАНИЕ РАБОТЫ</h3>
+                            <img src="img/separator.png">
+                        <span>ОПИСАНИЕ РАБОТЫ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="advantages">
+            <div class="head">
+                <h2>ПОЧЕМУ МЫ</h2>
+                    <div class="separator2">
+                        <img src="img/separator.png">
+                    </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            </div>
+            <div id="advantages-content">
+                <div class="advantages-content-block">
+                    <img src="img/monitor.png">
+                    <h4>ПРЕИМУЩЕСТВО 1</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/magicwand.png">
+                    <h4>ПРЕИМУЩЕСТВО 2</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/rocket.png">
+                    <h4>ПРЕИМУЩЕСТВО 3</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/globe.png">
+                    <h4>ПРЕИМУЩЕСТВО 4</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/settings.png">
+                    <h4>ПРЕИМУЩЕСТВО 5</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/layers.png">
+                    <h4>ПРЕИМУЩЕСТВО 6</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/wrench.png">
+                    <h4>ПРЕИМУЩЕСТВО 7</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+                <div class="advantages-content-block">
+                    <img src="img/note.png">
+                    <h4>ПРЕИМУЩЕСТВО 8</h4>
+                    <p>Sed ut perspiciatis unde omnis iste</br>
+                        natus error sit voluptatem</br>
+                        accusantium</p>
+                </div>
+            </div>
+        </div>
+        <div id="work-plan">
+            <div class="head">
+                <h2>КАК МЫ РАБОТАЕМ</h2>
+                    <div class="separator2">
+                        <img src="img/separator.png">
+                    </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            </div>
+            <div id="work-plan-content">
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 1</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>2</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 2</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>3</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 3</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>4</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 4</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>5</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 5</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+                <div class="work-plan-content-block">
+                    <div class="work-plan-content-block-photo">
+                        <img src="img/photo2.png">
+                        <div class="work-plan-content-block-photo-number">
+                            <span>6</span>
+                        </div>
+                    </div>
+                    <h4>ЭТАП 6</h4>
+                    <p>Sed ut perspiciatis unde</br>
+                        omnis iste natus error sit</br>
+                        voluptatem accusantium</p>
+                </div>
+            </div>
+            </div>
+        <div id="comments">
+            <h2>ОТЗЫВЫ О НАШЕЙ РАБОТЕ</h2>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="comments-slider-content-image">
+                            <img src="img/user.png">
+                        </div>
+                        <div class="comments-slider-content-text">
+                            <h4>ИМЯ ФАМИЛИЯ,<span>должность</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comments-slider-content-image">
+                            <img src="img/user.png">
+                        </div>
+                        <div class="comments-slider-content-text">
+                            <h4>ИМЯ ФАМИЛИЯ,<span>должность</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comments-slider-content-image">
+                            <img src="img/user.png">
+                        </div>
+                        <div class="comments-slider-content-text">
+                            <h4>ИМЯ ФАМИЛИЯ,<span>должность</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comments-slider-content-image">
+                            <img src="img/user.png">
+                        </div>
+                        <div class="comments-slider-content-text">
+                            <h4>ИМЯ ФАМИЛИЯ,<span>должность</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comments-slider-content-image">
+                            <img src="img/user.png">
+                        </div>
+                        <div class="comments-slider-content-text">
+                            <h4>ИМЯ ФАМИЛИЯ,<span>должность</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="contacts">
+            <div class="head">
+                <h2>ОСТАЛИСЬ ВОПРОСЫ?</h2>
+                    <div class="separator2">
+                        <img src="img/separator.png">
+                    </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</br>
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            </div>
+            <div id="contacts-content">
+                <div id="contacts-content-info">
+                    <h2>НАШ АДРЕС</h2>
+                        <p>г.Минск, ул. Сайтовая, 00, Офис 000</p>
+                    <h2>ЗВОНИТЕ</h2>
+                        <p>+375 (29) 000-00-00,  +375 (33) 000-00-00</p>
+                    <h2>ПИШИТЕ</h2>
+                        <p>info@000000.by</p>
+                </div>
+                <form id="contacts-content-form" action="" method="post">
+                    <div class="contacts-content-form-block">
+                        <p class="control-label">ВАШЕ ИМЯ</p>
+                        <input type="text" class="form-control" name="name" required="required" placeholder="Введите имя">
+                    </div>
+                    <div class="contacts-content-form-block">
+                        <p class="control-label">E-MAIL</p>
+                        <input type="email" class="form-control" name="email" required="required" placeholder="Введите email">
+                    </div>
+                    <div class="contacts-content-form-block">
+                        <p class="control-label">ТЕМА</p>
+                        <input type="text" class="form-control" name="theme" required="required" placeholder="Введите тему письма">
+                    </div>
+                    <div class="contacts-content-form-block">
+                        <p class="control-label">СООБЩЕНИЕ</p>
+                        <textarea id="inputMessage" name="note" required="required" placeholder="Введите сообщение"></textarea>
+                    </div>
+                    <div id="contacts-content-form-button">
+                        <input type="submit" class="contacts-content-form-button-style" value="ОТПРАВИТЬ">
+                    </div>
+                </form>
+            </div>
+            <a href="#main" id="button-up" class="hover">
+                <img src="img/button-up.png">
+            </a>
+        </div>
+        <div id="footer">
+            <div id="footer-content">
+                <div id="footer-content-block-logo">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="img/new-logo.png" alt="Webcom Media">
+                        </a>
+                    </div>
+                    <div id="footer-content-block-logo-separator">
+                        <img src="img/separator.png">
+                    </div>
+                    <p>Дисклеймер компании</p>
+                </div>
+                <div id="footer-content-block-social">
+                    <h4>МЫ В СОЦСЕТЯХ</h4>
+                    <div id="footer-content-block-social-separator">
+                        <img src="img/separator.png">
+                    </div>
+                    <div id="footer-content-block-social-links">
+                            <div id="instagram">
+                                <a href="https://www.instagram.com/"></a>
+                            </div>
+                            <div id="twitter">
+                                <a href="https://twitter.com/"></a>
+                            </div>
+                            <div id="facebook">
+                                <a href="https://www.facebook.com/"></a>
+                            </div>
+                    </div>
+                </div>
+                <div id="footer-content-block-address">
+                    <h4>АДРЕС</h4>
+                    <div id="footer-content-block-address-separator">
+                        <img src="img/separator.png">
+                    </div>
+                    <p>г.Минск, ул. Сайтовая, 00,</br>Офис 000</p>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper">
+            <p>copyrights 2016 <span>&#169;</span> company name</p>
+        </div>
+    </div>
+    <script src="js/responsiveslides.min.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/site-script.js"></script>
+</body>
+</html>
